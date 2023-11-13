@@ -23,7 +23,7 @@ metadata:
   name: app-deploy
   namespace: dev
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-deploy
