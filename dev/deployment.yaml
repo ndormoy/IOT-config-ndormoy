@@ -1,19 +1,39 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: app-deploy
+# spec:
+#   selector:
+#     matchLabels:
+#       app: app-deploy
+#   replicas: 1
+# template:
+#   metadata:
+#     labels:
+#       app: app-deploy
+#   spec:
+#     containers:
+#     - name: app-deploy
+#       image: wil42/playground:v1
+#       ports:
+#       - containerPort: 8888
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-deploy
+  namespace: dev
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: app-deploy
-  replicas: 1
-template:
-  metadata:
-    labels:
-      app: app-deploy
-  spec:
-    containers:
-    - name: app-deploy
-      image: wil42/playground:v1
-      ports:
-      - containerPort: 8888
+  template:
+    metadata:
+      labels:
+        app: app-deploy
+    spec:
+      containers:
+      - name: app-deploy
+        image: wil42/playground:v1
+        ports:
+        - containerPort: 8888
