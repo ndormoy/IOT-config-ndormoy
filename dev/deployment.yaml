@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+spec:
+  selector:
+    matchLabels:
+      app: app-deploy
+  replicas: 1
+template:
+  metadata:
+    labels:
+      app: app-deploy
+  spec:
+    containers:
+    - name: app-deploy
+      image: gcr.io/$PROJECT_ID/app-deploy:$TAG_NAME
+      ports:
+      - containerPort: 8080
